@@ -7,7 +7,7 @@ API_ID = 1623073
 API_HASH = "a6f2f0a7b2022f8ca7717d9101c5ff5c" 
 BOT_TOKEN = "7078609429:AAFHgMvPwq4RCa_84xoZjiMEi2jELsbtI3Y"
 OPENAI_API_KEY = "sk-chatbot-551whuZ6AfiHqttae0CbT3BlbkFJRP5G5lBr09fwvSer9qWS" 
-OPENAI_MODEL = "gpt-3.5"
+OPENAI_MODEL = "v1"
 
 # Initialize OpenAI client
 openai.api_key = OPENAI_API_KEY
