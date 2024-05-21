@@ -10,7 +10,7 @@ OPENAI_MODEL = "text-davinci-003"  # Set your preferred model
 
 # Initialize clients
 openai.api_key = OPENAI_API_KEY
-app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+app = client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 # Message handler
 @app.on_message(filters.text & filters.command)
