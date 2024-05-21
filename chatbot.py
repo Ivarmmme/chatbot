@@ -6,7 +6,7 @@ from pyrogram.types import Message # Import Message type
 API_ID = 1623073  
 API_HASH = "a6f2f0a7b2022f8ca7717d9101c5ff5c" 
 BOT_TOKEN = "7078609429:AAFHgMvPwq4RCa_84xoZjiMEi2jELsbtI3Y"
-OPENAI_API_KEY = "sk-proj-b3sDYwSPgJ7VHKjwNOumT3BlbkFJi4ql9AiMDl8IF9EMQ6bt" 
+OPENAI_API_KEY = "sk-chatbot-551whuZ6AfiHqttae0CbT3BlbkFJRP5G5lBr09fwvSer9qWS" 
 OPENAI_MODEL = "text-davinci-003"
 
 # Initialize OpenAI client
