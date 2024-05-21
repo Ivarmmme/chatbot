@@ -22,7 +22,7 @@ app = Client(
 )
 
 # Define the message handler
-@app.on_message(filters.command(["command_name"]))  # Example command
+@app.on_message(filters.command(["start"]))  # Example command
 async def handle_message(client: Client, message: Message):
     prompt = message.text.strip()
 
