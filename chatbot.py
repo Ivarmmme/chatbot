@@ -10,7 +10,7 @@ OPENAI_API_KEY = "sk-chatbot-551whuZ6AfiHqttae0CbT3BlbkFJRP5G5lBr09fwvSer9qWS"
 OPENAI_MODEL = "text-davinci-003"
 
 # Initialize OpenAI client
-openai.api_key = OPENAI_API_KEY
+openai.api_key = gpt-3.5-turbo-1106
 
 # Create Pyrogram Client
 app = Client(
