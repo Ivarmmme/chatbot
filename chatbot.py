@@ -14,7 +14,7 @@ openai.api_key = openai_api_key
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 # Define the message handler
-@app.on_message(filters.text & ~filters.command)
+@app.on_message(filters.text & filters.command)
 async def handle_message(client, message):
     prompt = message.text
     response = await generate_response(prompt)
