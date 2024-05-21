@@ -1,37 +1,39 @@
 from pyrogram import Client, filters
 import openai
 
-# Set your credentials (replace with your actual values)
-api_id = '1623073'
-api_hash = 'a6f2f0a7b2022f8ca7717d9101c5ff5c'
-bot_token = '7078609429:AAFHgMvPwq4RCa_84xoZjiMEi2jELsbtI3Y'
-openai_api_key = 'sk-proj-b3sDYwSPgJ7VHKjwNOumT3BlbkFJi4ql9AiMDl8IF9EMQ6bt'
+# Configuration (Move to separate file or environment variables in production)
+API_ID = 1623073
+API_HASH = "a6f2f0a7b2022f8ca7717d9101c5ff5c"
+BOT_TOKEN = "7078609429:AAFHgMvPwq4RCa_84xoZjiMEi2jELsbtI3Y"
+OPENAI_API_KEY = "sk-proj-b3sDYwSPgJ7VHKjwNOumT3BlbkFJi4ql9AiMDl8IF9EMQ6bt"  # Be sure to keep your key secret
+OPENAI_MODEL = "text-davinci-003"  # Set your preferred model
 
-# Initialize OpenAI
-openai.api_key = openai_api_key
+# Initialize clients
+openai.api_key = OPENAI_API_KEY
+app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
-# Create Pyrogram Client with bot token
-app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
-
-# Define the message handler
+# Message handler
 @app.on_message(filters.text & filters.command)
 async def handle_message(client, message):
-    prompt = message.text
-    response = await generate_response(prompt)
-    await message.reply_text(response)
+    prompt = message.text.strip()
 
-# Function to generate response using OpenAI
-async def generate_response(prompt):
-    try:
-        completion = openai.Completion.create(
-            engine="text-davinci-003",  # or the latest model
-            prompt=prompt,
-            max_tokens=150  # Adjust as needed
-        )
-        return completion.choices[0].text.strip()
-    except Exception as e:
-        return f"An error occurred: {str(e)}"
+    if prompt:
+        try:
+            response = await generate_response(prompt)
+            await message.reply_text(response)
+        except openai.OpenAIError as e:
+            await message.reply_text(f"OpenAI Error: {e}")
 
-# Main function to run the bot
+# OpenAI response generation (Note async for better concurrency)
+async def generate_response(prompt, max_tokens=150):
+    completion = await openai.Completion.acreate(  
+        engine=OPENAI_MODEL,
+        prompt=prompt,
+        max_tokens=max_tokens
+    )
+    return completion.choices[0].text.strip()
+
+# Run the bot
 if __name__ == "__main__":
-    app.run() 
+    app.run()
+    
