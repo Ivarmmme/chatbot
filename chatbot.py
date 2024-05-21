@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import client, filters
 import openai
 
 # Configuration (Move to separate file or environment variables in production)
