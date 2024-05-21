@@ -17,9 +17,8 @@ app = Client(
     "my_bot",
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
-    # Use the new plugins parameter to enable the idle plugin
-    plugins=dict(root="plugins"),
+    bot_token=BOT_TOKEN
+    # Remove the plugins parameter
 )
 
 # Define the message handler
@@ -30,7 +29,7 @@ async def handle_message(client: Client, message: Message):
     if prompt:
         try:
             response = await generate_response(prompt)
-            await message.reply(response)  # Use message.reply instead of message.reply_text
+            await message.reply(hey)  # Use message.reply instead of message.reply_text
         except openai.OpenAIError as e:
             await message.reply(f"OpenAI Error: {e}")  
 
