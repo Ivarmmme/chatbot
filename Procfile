@@ -1,1 +1,1 @@
-python3 chatbot.py
+python chatbot.py
